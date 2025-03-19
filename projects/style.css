@@ -75,7 +75,7 @@ header .logo i {
   font-size: 2.2rem;
 }
 header .logo:hover {
-  color: #fc8c05;
+  color: #09A9C5;
 }
 header .navbar ul{
   list-style: none;
@@ -95,8 +95,8 @@ header .navbar ul li a{
 }
 header .navbar ul li a.active,
 header .navbar ul li a:hover{
-  color: #011aff;
-  border-bottom: .2rem solid #011aff;
+  color: #00879E;
+  border-bottom: .2rem solid #00879E;
   padding: .5rem 0;
 }
 /* navbar ends */
@@ -142,9 +142,9 @@ header .navbar ul li a:hover{
   header .navbar ul li a.active,
   header .navbar ul li a:hover{
     padding: 1rem;
-    color: #fff;
+    color: #00879E;
     border-radius: .5rem;
-    border-bottom: .5rem solid #011aff;
+    border-bottom: .5rem solid #00879E;
   }
   .fa-times{
     transform: rotate(180deg);
@@ -166,7 +166,7 @@ header .navbar ul li a:hover{
   padding: 1rem;
 }
 .work .heading span{
-  color: rgb(255, 230, 0);
+  color: #05bcdb;
 }
 .work .button-group{
   display: flex;
@@ -233,7 +233,7 @@ header .navbar ul li a:hover{
   height: 4.5rem;
   width: 100%;
   padding-left: 1rem;
-  background: #ffd900;
+  background: #09A9C5;
 }
 .work .box-container .box .content .tag h3{
   font-size: 2rem;
@@ -267,7 +267,7 @@ header .navbar ul li a:hover{
   margin-right: 2rem;
 }
 .work .desc .btns .btn:hover{
-  background: #310ae0f5;
+  background: #005C98;
 }
 
 @media screen and (max-width: 450px) {
@@ -341,7 +341,7 @@ header .navbar ul li a:hover{
   right: 2rem;
   padding: 1rem 1.5rem;
   font-size: 2rem;
-  background: #ffae00;
+  background: #09A9C5;
   color: rgb(13, 0, 44);
   border-radius: 5rem;
   transition: 1s linear;
