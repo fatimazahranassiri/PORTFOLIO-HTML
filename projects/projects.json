@@ -10,10 +10,10 @@
     }
   },
   {
-    "name": "chat-app",
-    "desc": "It's a web based chat app made using popular javaScript library Socket IO. Allows multiple users to connect.",
+    "name": "formulaire",
+    "desc": "Un formulaire d'inscription et de connexion pour une application en html et css et js ",
     "image": "projet 2 (2)",
-    "category": "webPage",
+    "category": "formulaire",
     "links": {
       "view": "",
       "code": ""
