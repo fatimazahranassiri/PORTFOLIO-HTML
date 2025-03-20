@@ -57,7 +57,7 @@ function showProjects(projects) {
                         <p>${project.desc}</p>
                         <div class="btns">
                             <a href="javascript:void(0)" class="btn view-btn" data-media="../assets/images/projects/${project.image}.png"><i class="fas fa-eye"></i> View</a>
-                            <a href="#" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
+                            <a href="#" class="btn" >Code <i class="fas fa-code"></i></a>
                         </div>
                     </div>
                 </div>
