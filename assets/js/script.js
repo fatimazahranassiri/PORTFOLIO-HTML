@@ -107,33 +107,36 @@ function showSkills(skills) {
 function showProjects(projects) {
     let projectsContainer = document.querySelector("#work .box-container");
     let projectHTML = "";
+
+    // Filter out 'android' category and limit to 10 projects
     projects.slice(0, 10).filter(project => project.category != "android").forEach(project => {
         projectHTML += `
         <div class="box tilt">
-      <img draggable="false" src="/assets/images/projects/${project.image}.png" alt="project" />
-      <div class="content">
-        <div class="tag">
-        <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>`
+            <img draggable="false" src="./assets/images/projects/${project.image}.png" alt="project" />
+            <div class="content">
+                <div class="tag">
+                    <h3>${project.name}</h3>
+                </div>
+                <div class="desc">
+                    <p>${project.desc}</p>
+                    <div class="btns">
+                        <a href="javascript:void(0)" class="btn view-btn" data-media="./assets/images/projects/${project.image}.png"><i class="fas fa-eye"></i> View</a>
+                        <a href="#" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>`;
     });
+
+    // Inject the generated HTML into the container
     projectsContainer.innerHTML = projectHTML;
 
-    // <!-- tilt js effect starts -->
+    // Initialize tilt effect for newly injected projects
     VanillaTilt.init(document.querySelectorAll(".tilt"), {
         max: 15,
     });
-    // <!-- tilt js effect ends -->
 
-    /* ===== SCROLL REVEAL ANIMATION ===== */
+    // ScrollReveal initialization
     const srtop = ScrollReveal({
         origin: 'top',
         distance: '80px',
@@ -141,10 +144,47 @@ function showProjects(projects) {
         reset: true
     });
 
-    /* SCROLL PROJECTS */
+    // Apply ScrollReveal effect to projects
     srtop.reveal('.work .box', { interval: 200 });
 
+    // Now, attach the event listeners for the "View" buttons (modal logic)
+    document.querySelectorAll(".view-btn").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            const mediaUrl = this.getAttribute("data-media");
+
+            // Get modal content container
+            const modalContent = document.getElementById("modalContent");
+
+            // Check if it's an image or video and display accordingly
+            if (mediaUrl.endsWith(".mp4") || mediaUrl.includes("youtube")) {
+                modalContent.innerHTML = `<video controls class="w-full h-full"><source src="${mediaUrl}" type="video/mp4"></video>`;
+            } else {
+                modalContent.innerHTML = `<img src="${mediaUrl}" alt="Project Image">`;
+            }
+
+            // Show modal
+            const modal = document.getElementById("projectModal");
+            modal.style.display = "flex";
+            
+        });
+    });
+
+    // Close modal when clicking the "X" button
+    const modal = document.getElementById("projectModal");
+    const closeBtn = document.querySelector(".close");
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none"; // Hide modal
+    });
+
+    // Close modal if clicking outside of modal content
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none"; // Hide modal
+        }
+    });
 }
+
 
 fetchData().then(data => {
     showSkills(data);

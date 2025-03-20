@@ -43,46 +43,66 @@ function getProjects() {
 function showProjects(projects) {
     let projectsContainer = document.querySelector(".work .box-container");
     let projectsHTML = "";
+
     projects.forEach(project => {
         projectsHTML += `
         <div class="grid-item ${project.category}">
-        <div class="box tilt" style="width: 380px; margin: 1rem">
-      <img draggable="false" src="/assets/images/projects/${project.image}.png" alt="project" />
-      <div class="content">
-        <div class="tag">
-        <h3>${project.name}</h3>
-        </div>
-        <div class="desc">
-          <p>${project.desc}</p>
-          <div class="btns">
-            <a href="${project.links.view}" class="btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-            <a href="${project.links.code}" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>`
+            <div class="box tilt" style="width: 380px; margin: 1rem">
+                <img draggable="false" src="../assets/images/projects/${project.image}.png" alt="project" />
+                <div class="content">
+                    <div class="tag">
+                        <h3>${project.name}</h3>
+                    </div>
+                    <div class="desc">
+                        <p>${project.desc}</p>
+                        <div class="btns">
+                            <a href="javascript:void(0)" class="btn view-btn" data-media="../assets/images/projects/${project.image}.png"><i class="fas fa-eye"></i> View</a>
+                            <a href="#" class="btn" target="_blank">Code <i class="fas fa-code"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
     });
+
     projectsContainer.innerHTML = projectsHTML;
+    
 
-    // vanilla tilt.js
-    // VanillaTilt.init(document.querySelectorAll(".tilt"), {
-    //     max: 20,
-    // });
-    // // vanilla tilt.js  
+    // Now, attach the event listener for the modal after the content has been loaded
+    document.querySelectorAll(".view-btn").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            const mediaUrl = this.getAttribute("data-media");
 
-    // /* ===== SCROLL REVEAL ANIMATION ===== */
-    // const srtop = ScrollReveal({
-    //     origin: 'bottom',
-    //     distance: '80px',
-    //     duration: 1000,
-    //     reset: true
-    // });
+            // Show image or video in modal
+            const modalContent = document.getElementById("modalContent");
+            if (mediaUrl.endsWith(".mp4") || mediaUrl.includes("youtube")) {
+                modalContent.innerHTML = `<video controls class="w-full h-full"><source src="${mediaUrl}" type="video/mp4"></video>`;
+            } else {
+                modalContent.innerHTML = `<img src="${mediaUrl}" alt="Project Image">`;
+            }
 
-    // /* SCROLL PROJECTS */
-    // srtop.reveal('.work .box', { interval: 200 });
+            const modal = document.getElementById("projectModal");
+            modal.style.display = "flex"; // Show modal
+            
+        });
+    });
 
-    // isotope filter products
+    // Handle closing the modal
+    const modal = document.getElementById("projectModal");
+    const closeBtn = document.querySelector(".close");
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none"; // Hide modal
+    });
+
+    // Close the modal if user clicks outside of the modal content
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none"; // Hide modal
+        }
+    });
+
+    // Isotope filter functionality (this is unrelated to modal, so it remains unchanged)
     var $grid = $('.box-container').isotope({
         itemSelector: '.grid-item',
         layoutMode: 'fitRows',
@@ -91,7 +111,7 @@ function showProjects(projects) {
         }
     });
 
-    // filter items on button click
+    // Filter items on button click
     $('.button-group').on('click', 'button', function () {
         $('.button-group').find('.is-checked').removeClass('is-checked');
         $(this).addClass('is-checked');
@@ -99,6 +119,7 @@ function showProjects(projects) {
         $grid.isotope({ filter: filterValue });
     });
 }
+
 
 getProjects().then(data => {
     showProjects(data);

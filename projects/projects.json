@@ -3,17 +3,17 @@
     "name": "calculatrice",
     "desc": "An interactive web calculator developed in html ,css ,JavaScript, offering advanced features for fast and accurate calculations.",
     "image": "calculatrice",
-    "category": "mern",
+    "category": "webApp",
     "links": {
       "view": "",
       "code": ""
     }
   },
   {
-    "name": "calculatire",
+    "name": "chat-app",
     "desc": "It's a web based chat app made using popular javaScript library Socket IO. Allows multiple users to connect.",
     "image": "projet 2 (2)",
-    "category": "mern",
+    "category": "webPage",
     "links": {
       "view": "",
       "code": ""
