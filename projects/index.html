@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./projects/style.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link id='favicon' rel="shortcut icon" href="/assets/images/hero2.2.png" type="image/x-png">
@@ -38,10 +38,10 @@
   
   <div id="filters" class="button-group">
     <button class="btn is-checked" data-filter="*">All Projects</button>
-    <button class="btn" data-filter=".mern">MERN Stack</button>
-    <button class="btn" data-filter=".lamp">LAMP Stack</button>
-    <button class="btn" data-filter=".basicweb">Basic Web</button>
+    <button class="btn" data-filter=".webPage">Page Web</button>
+    <button class="btn" data-filter=".webApp">Application Web</button>
     <button class="btn" data-filter=".android">Android App</button>
+    <button class="btn" data-filter=".other">Other</button>
   </div>
 
   <div class="box-container">
@@ -65,7 +65,7 @@
   </div>
 
   <div class="backbtn">
-    <a href="/#work" class="btn">
+    <a href="../#work" class="btn">
         <i class="fas fa-arrow-left"></i>
         <span>Back to Home</span>
   </a>
@@ -94,7 +94,21 @@
 
 <!-- ==== ALL MAJOR JAVASCRIPT CDNS ENDS ==== -->
 
-<script src="./script.js"></script>
+<script src="./projects/script.js"></script>
+
+<!-- POP-UP -->
+<!-- Modal -->
+<div id="projectModal" class="modal" style="display: none;">
+  <div class="modal-content">
+      <!-- Close Button -->
+      <span class="close">&times;</span>
+      <!-- Media Content -->
+      <div id="modalContent"></div>
+  </div>
+</div>
+
+
+
 
 </body>
 </html>
